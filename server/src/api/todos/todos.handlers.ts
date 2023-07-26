@@ -2,7 +2,7 @@
 /* eslint-disable import/prefer-default-export */
 import { Response, Request, NextFunction } from 'express';
 import { ObjectId } from 'mongodb';
-import { TodoWithId, Todos, Todo } from './todo.model';
+import { TodoWithId, Todos, Todo } from './todo.models';
 import { ParamsWithId } from '../../interfaces/ParamsWithId';
 
 export async function findAll(req: Request, res: Response<TodoWithId[]>, next: NextFunction) {

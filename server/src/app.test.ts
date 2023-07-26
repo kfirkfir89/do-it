@@ -5,7 +5,7 @@ import app from './app';
 describe('app', () => {
   it('responds with a not found message', (done) => {
     request(app)
-      .get('/what-is-this-even')
+      .get('/notfoundpage')
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
       .expect(404, done);
@@ -19,7 +19,7 @@ describe('GET /', () => {
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
       .expect(200, {
-        message: '🦄🌈✨👋🌎🌍🌏✨🌈🦄',
+        message: 'API - 👋🌎🌍🌏',
       }, done);
   });
 });

@@ -1,9 +1,9 @@
 import {
-  Request, Response, NextFunction, Router,
+  Router,
 } from 'express';
 import { z } from 'zod';
 import * as TodoHandlers from './todos.handlers';
-import { Todo } from './todo.model';
+import { Todo } from './todo.models';
 import { validateRequest } from '../../middlewares';
 import { ParamsWithId } from '../../interfaces/ParamsWithId';
 
