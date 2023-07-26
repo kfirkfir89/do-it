@@ -11,6 +11,7 @@ beforeAll(async () => {
 });
 
 let user: UserWithId;
+
 describe('POST /register', () => {
   it('responds with an Zod error', (done) => {
     request(app)

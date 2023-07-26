@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* @layer base{
+  @font-face {
+    font-family: 'Pacifico', cursive;
+    font-family: 'Titan One', cursive;
+    font-family: 'Dosis', sans-serif;
+    font-family: 'Dosis', sans-serif;
+    font-family: 'Smooch Sans', sans-serif;
+  }
+} */
+/* 
+@layer components{
+
+}
+ */
+@layer utilities {
+  html, body, #root {
+    height: 100%;
+    width: 100%;
+  }
+}
