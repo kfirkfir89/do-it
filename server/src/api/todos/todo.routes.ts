@@ -1,7 +1,6 @@
 import {
   Router,
 } from 'express';
-import { z } from 'zod';
 import * as TodoHandlers from './todos.handlers';
 import { Todo } from './todo.models';
 import { validateRequest } from '../../middlewares';

@@ -1,8 +1,15 @@
+import { ReactQueryDevtools } from 'react-query/devtools';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import AppContent from './AppContent';
+
+const queryClient = new QueryClient();
+
 function App() {
   return (
-    <div className="flex h-full w-full bg-red-400">
-      <span>welcome</span>
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <AppContent />
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
   );
 }
 

@@ -12,10 +12,10 @@ beforeAll(async () => {
 
 let user: UserWithId;
 
-describe('POST /register', () => {
+describe('POST /api/v1/register', () => {
   it('responds with an Zod error', (done) => {
     request(app)
-      .post('/register')
+      .post('/api/v1/register')
       .set('Accept', 'application/json')
       .send({
         displayName: '',
@@ -27,7 +27,7 @@ describe('POST /register', () => {
   });
   it('responds sucsseded registeration', (done) => {
     request(app)
-      .post('/register')
+      .post('/api/v1/register')
       .set('Accept', 'application/json')
       .send({
         displayName: 'kfirkfir898989',
@@ -45,10 +45,10 @@ describe('POST /register', () => {
   });
 });
 
-describe('POST /login', () => {
+describe('POST /api/v1/login', () => {
   it('responds with an user wrond info', (done) => {
     request(app)
-      .post('/login')
+      .post('/api/v1/login')
       .set('Accept', 'application/json')
       .send({ email: 'fds@gfdss.com', password: 'fdsaf35432' })
       .expect('Content-Type', /json/)
@@ -56,7 +56,7 @@ describe('POST /login', () => {
   });
   it('responds with an Zod error', (done) => {
     request(app)
-      .post('/login')
+      .post('/api/v1/login')
       .set('Accept', 'application/json')
       .send({ email: 'fds@gfdss', password: 'fds2' })
       .expect('Content-Type', /json/)
@@ -64,7 +64,7 @@ describe('POST /login', () => {
   });
   it('responds with an user login data', (done) => {
     request(app)
-      .post('/login')
+      .post('/api/v1/login')
       .set('Accept', 'application/json')
       .send({ email: user.email, password: user.password })
       .expect('Content-Type', /json/)
@@ -79,10 +79,10 @@ describe('POST /login', () => {
   });
 });
 
-describe('PUT /update-user-data', () => {
+describe('PUT /api/v1/update-user-data', () => {
   it('responds with an Zod error', (done) => {
     request(app)
-      .put('/update-user-data')
+      .put('/api/v1/update-user-data')
       .set('Accept', 'application/json')
       .send({
         _id: 'gfdsgfd',
@@ -95,7 +95,7 @@ describe('PUT /update-user-data', () => {
   });
   it('responds with an NotFound error', (done) => {
     request(app)
-      .put('/update-user-data')
+      .put('/api/v1/update-user-data')
       .send({
         _id: '64be6e52244afefd1462b77c',
         displayName: 'fdsfgdsa',
@@ -108,7 +108,7 @@ describe('PUT /update-user-data', () => {
   });
   it('responds with a updated user data', (done) => {
     request(app)
-      .put('/update-user-data')
+      .put('/api/v1/update-user-data')
       .set('Accept', 'application/json')
       .send({
         _id: user._id.toString(),

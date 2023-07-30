@@ -2,10 +2,10 @@ import request from 'supertest';
 
 import app from '../app';
 
-describe('GET /', () => {
+describe('GET api/v1', () => {
   it('responds with a json message', (done) => {
     request(app)
-      .get('/')
+      .get('/api/v1')
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
       .expect(200, {

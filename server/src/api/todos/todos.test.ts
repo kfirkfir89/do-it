@@ -12,10 +12,10 @@ beforeAll(async () => {
   }
 });
 
-describe('GET /todos', () => {
+describe('GET /api/v1/todos', () => {
   it('responds with an array of todos', (done) => {
     request(app)
-      .get('/todos')
+      .get('/api/v1/todos')
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
       .expect(200)
@@ -28,10 +28,10 @@ describe('GET /todos', () => {
 });
 
 let id = '';
-describe('POST /todos', () => {
+describe('POST /api/v1/todos', () => {
   it('responds with an array if the todo is invalid', (done) => {
     request(app)
-      .post('/todos')
+      .post('/api/v1/todos')
       .set('Accept', 'application/json')
       .send({
         content: '',
@@ -45,7 +45,7 @@ describe('POST /todos', () => {
   });
   it('responds with an inserted object', (done) => {
     request(app)
-      .post('/todos')
+      .post('/api/v1/todos')
       .set('Accept', 'application/json')
       .send({
         content: 'Learn TypeScript Node',
@@ -64,10 +64,10 @@ describe('POST /todos', () => {
   });
 });
 
-describe('GET /todos/:id', () => {
+describe('GET /api/v1/todos/:id', () => {
   it('responds with a single to todo', (done) => {
     request(app)
-      .get(`/todos/${id}`)
+      .get(`/api/v1/todos/${id}`)
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
       .expect(200)
@@ -82,31 +82,31 @@ describe('GET /todos/:id', () => {
   });
   it('responds with an invalid ObjectId error', (done) => {
     request(app)
-      .get('/todos/wrongid')
+      .get('/api/v1/todos/wrongid')
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
       .expect(422, done);
   });
   it('responds with an NotFound error', (done) => {
     request(app)
-      .get('/todos/64be6e52244afefd1462b77c')
+      .get('/api/v1/todos/64be6e52244afefd1462b77c')
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
       .expect(404, done);
   });
 });
 
-describe('PUT /todos/:id', () => {
+describe('PUT /api/v1/todos/:id', () => {
   it('responds with an invalid ObjectId error', (done) => {
     request(app)
-      .put('/todos/wrongid')
+      .put('/api/v1/todos/wrongid')
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
       .expect(422, done);
   });
   it('responds with an NotFound error', (done) => {
     request(app)
-      .put('/todos/64be6e52244afefd1462b77c')
+      .put('/api/v1/todos/64be6e52244afefd1462b77c')
       .send({
         content: 'Learn TS',
         done: true,
@@ -117,7 +117,7 @@ describe('PUT /todos/:id', () => {
   });
   it('responds with a single to todo', (done) => {
     request(app)
-      .put(`/todos/${id}`)
+      .put(`/api/v1/todos/${id}`)
       .set('Accept', 'application/json')
       .send({
         content: 'Learn TS',
@@ -137,17 +137,17 @@ describe('PUT /todos/:id', () => {
   });
 });
 
-describe('DELETE /todos/:id', () => {
+describe('DELETE /api/v1/todos/:id', () => {
   it('responds with an invalid ObjectId error', (done) => {
     request(app)
-      .delete('/todos/wrongid')
+      .delete('/api/v1/todos/wrongid')
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
       .expect(422, done);
   });
   it('responds with an NotFound error', (done) => {
     request(app)
-      .delete('/todos/64be6e52244afefd1462b77c')
+      .delete('/api/v1/todos/64be6e52244afefd1462b77c')
       .send({
         content: 'Learn TS',
         done: true,
@@ -157,13 +157,13 @@ describe('DELETE /todos/:id', () => {
   });
   it('responds with a 204 status code', (done) => {
     request(app)
-      .delete(`/todos/${id}`)
+      .delete(`/api/v1/todos/${id}`)
       .set('Accept', 'application/json')
       .expect(204, done);
   });
   it('responds with an NotFound error', (done) => {
     request(app)
-      .get(`/todos/${id}`)
+      .get(`/api/v1/todos/${id}`)
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
       .expect(404, done);
